@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FreedomShop</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'shared/main_nav' %>
+
+<div class="container">
+  <div class="grid">
+    <div class="col-md-3">
+      <ul class="nav nav-stacked">
+        <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li class="navbar-heading">Media</li>
+        <li><%= link_to(media_path) do %><span class='glyphicon glyphicon-picture'></span> View Media<% end %></li>
+        <li><%= link_to(new_medium_path) do %><span class='glyphicon glyphicon-plus-sign'></span> Create Media<% end %></li>
+        <%= content_for?(:sidebar) ? yield(:sidebar) : '' %>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
+  </div>
+</div>r
+
+</body>
+</html>

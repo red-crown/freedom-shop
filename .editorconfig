@@ -1,0 +1,21 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+# Unix-style newlines with a newline ending every file
+end_of_line = lf
+# always insert newline
+insert_final_newline = true
+# remove trailing white-space
+trim_trailing_whitespace = true
+
+
+# 2 Spaces for Ruby Files
+[*.rb]
+indent_style = space
+indent_size = 2
+
+# 2 Spaces for Ruby Files
+[*.erb]
+indent_style = space
+indent_size = 2

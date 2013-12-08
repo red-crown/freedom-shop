@@ -1,0 +1,31 @@
+<%= image_tag @medium.url, :style => "max-width:100%;margin-bottom:20px;" if @medium.url %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @medium.name %>
+</p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @medium.filename %>
+</p>
+
+<p>
+  <strong>Extension:</strong>
+  <%= @medium.extension %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @medium.type %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @medium.comment %>
+</p>
+
+<%= link_to 'Edit', edit_medium_path(@medium) %> |
+<%= link_to 'Back', media_path %>

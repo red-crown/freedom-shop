@@ -1,0 +1,37 @@
+<h1>Listing media</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="width:100px;"><div style="width:100px;"></div></th>
+      <th>Name</th>
+      <th>Filename</th>
+      <th>Extension</th>
+      <th>Type</th>
+      <th>Comment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @media.each do |medium| %>
+      <tr>
+        <td><%= image_tag medium.url, :class => "img-thumbnail" if medium.url %></td>
+        <td><%= medium.name %></td>
+        <td><%= medium.filename %></td>
+        <td><%= truncate medium.extension, :length => 30 %></td>
+        <td><%= medium.type %></td>
+        <td><%= medium.comment %></td>
+        <td><%= link_to 'Show', medium %></td>
+        <td><%= link_to 'Edit', edit_medium_path(medium) %></td>
+        <td><%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medium', new_medium_path %>

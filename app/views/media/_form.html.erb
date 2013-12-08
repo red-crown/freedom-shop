@@ -1,0 +1,40 @@
+<%= form_for(@medium) do |f| %>
+  <% if @medium.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@medium.errors.count, "error") %> prohibited this medium from being saved:</h2>
+
+      <ul>
+      <% @medium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div><%= image_tag @medium.url, :style => "max-width:100%;" if @medium.url %></div>
+
+<table class="table table-bordered">
+<tbody>
+  <tr>
+    <th style="text-align:right; width: 200px;padding-right:10px;"><%= f.label "File" %></th>
+    <td><%= f.file_field :picture, class: "form-control" %></td>
+  </tr>
+  <tr>
+    <th style="text-align:right; width: 200px;padding-right:10px;"><%= f.label :name %></th>
+    <td><%= f.text_field :name, class: "form-control" %></td>
+  </tr>
+  <tr>
+    <th style="text-align:right; width: 200px;padding-right:10px;"><%= f.label :extension %></th>
+    <td><%= f.text_field :extension, class: "form-control" %></td>
+  </tr>
+  <tr>
+    <th style="text-align:right; width: 200px;padding-right:10px;"><%= f.label :comment %></th>
+    <td><%= f.text_area :comment, class: "form-control"  %></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td><%= f.submit "Create", class: "btn btn-primary" %></td>
+  </tr>
+</tbody>
+</table>
+<% end %>
