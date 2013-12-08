@@ -25,8 +25,8 @@ set :ssh_options, {
 }
 set :use_sudo, false
 
-set :linked_files, %w{config/database.yml config/config.yml}
-set :linked_dirs, %w{bin log tmp vendor/bundle public/system}
+#set :linked_files, %w{config/database.yml config/config.yml}
+set :linked_dirs, %w{bin log tmp vendor/bundle public/system public/uploads}
 
 SSHKit.config.command_map[:rake]  = "bundle exec rake"
 SSHKit.config.command_map[:rails] = "bundle exec rails"
