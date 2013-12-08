@@ -15,6 +15,8 @@ set :user, 'frosty'
 server '192.227.160.74', user: 'frosty', roles: %w{web app db} 
 set :deploy_to, "/home/#{fetch(:user)}/Applications/#{fetch(:application)}"
 
+set :log_level, :info
+
 set :ssh_options, {
   user: %w(user),
   keys: %w(/home/matthew/.ssh/id_rsa),
@@ -23,13 +25,22 @@ set :ssh_options, {
 }
 set :use_sudo, false
 
-namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
+set :linked_files, %w{config/database.yml config/config.yml}
+set :linked_dirs, %w{bin log tmp vendor/bundle public/system}
 
-  desc "Restart Passenger app"
+SSHKit.config.command_map[:rake]  = "bundle exec rake"
+SSHKit.config.command_map[:rails] = "bundle exec rails"
+
+namespace :deploy do
+
+  desc "Restart application"
   task :restart do
-    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join("/tmp/restart.txt")
+    end
   end
+
+  after :finishing, "deploy:cleanup"
+
 end
 
