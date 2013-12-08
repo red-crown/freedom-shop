@@ -13,7 +13,7 @@ role :db, "192.227.160.74"
 
 set :user, 'frosty'
 server '192.227.160.74', user: 'frosty', roles: %w{web app db} 
-set :deploy_to, "/home/#{:user}/Applications/#{:application}"
+set :deploy_to, "/home/#{user}/Applications/#{application}"
 
 set :ssh_options, {
   user: %w(user),
