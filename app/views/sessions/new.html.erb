@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Login</h3>
+    </div>
+    <div class="panel-body">
+        <%= form_for @session, :class => "form-horizontal" do |f| %>
+            <%= f.label "Name" %>
+            <%= f.text_field :name, :class => "form-control" %>
+            <%= f.label "Password" %>
+            <%= f.password_field :password, :class => "form-control" %>
+            <br>
+            <%= submit_tag "login", :class => "btn btn-primary form-control" %>
+        <% end %>
+    </div>
+</div>

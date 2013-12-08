@@ -1,4 +1,5 @@
 class MediaController < ApplicationController
+  before_filter :ensure_login, :except => [:show,:index]
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
 
   # GET /media

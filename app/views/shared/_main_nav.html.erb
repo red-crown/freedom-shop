@@ -5,6 +5,7 @@
       <li><%= link_to "Home", root_path %></li>
     </ul>
 
+    <% if @user %>
     <form action="" class="navbar-form navbar-left">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search">
@@ -23,11 +24,16 @@
         <ul class="dropdown-menu">
           <li class="dropdown-header">Actions</li>
           <li class="divider"></li>
-          <li><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
       </li>
 
     </ul>
+    <% else %>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to(new_session_path) do %><span class="glyphicon glyphicon-log-in"></span> Login<% end %></li>
+        </ul>
+    <% end %>
 
   </div>
 </nav>

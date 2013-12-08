@@ -27,5 +27,7 @@
   <%= @medium.comment %>
 </p>
 
+<% if @user %>
 <%= link_to 'Edit', edit_medium_path(@medium) %> |
+<% end %>
 <%= link_to 'Back', media_path %>
