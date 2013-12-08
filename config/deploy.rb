@@ -1,6 +1,6 @@
 set :application, 'freedom-shop'
 set :scm, "git"
-set :repo_url, "file://Users/matthew/Projects/freedom-shop"
+set :repo_url, "https://github.com/red-crown/freedom-shop.git"
 set :copy_cach, true
 set :copy_via, :scp
 set :branch, "master"
