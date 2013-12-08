@@ -42,7 +42,7 @@ set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_roles, :all
 set :bundle_bins, %w(gem rake rails)
 
-set :linked_files, %w{config/database.yml config/application.yml}
+#set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp vendor/bundle public/system public/uploads}
 
 SSHKit.config.command_map[:rake]  = "bundle exec rake"
