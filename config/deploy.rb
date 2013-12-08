@@ -33,17 +33,14 @@ set :log_level, :info
 set :format, :pretty
 set :pty, true
 
-set :default_env, { rvm_bin_path: "~/.rvm/bin" }
-set :bundle_gemfile, -> { relase_path.join('Gemfile') }
+set :bundle_gemfile, -> { release_path.join('Gemfile') }
 set :bundle_dir, -> { shared_path.join('bundle') }
 set :bundle_flags, ''
 set :bundle_without, %w{test development}.join(' ')
-set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_roles, :all
-set :bundle_bins, %w(gem rake rails)
 
 #set :linked_files, %w{config/database.yml config/application.yml}
-set :linked_dirs, %w{bin log tmp vendor/bundle public/system public/uploads}
+set :linked_dirs, %w{log tmp vendor/bundle public/system public/uploads}
 
 SSHKit.config.command_map[:rake]  = "bundle exec rake"
 SSHKit.config.command_map[:rails] = "bundle exec rails"
