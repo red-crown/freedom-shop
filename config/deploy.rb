@@ -13,7 +13,7 @@ role :db, "192.227.160.74"
 
 set :user, 'frosty'
 server '192.227.160.74', user: 'frosty', roles: %w{web app db} 
-set :deploy_to, "/home/#{user}/Applications/#{application}"
+set :deploy_to, "/home/#{fetch(:user)}/Applications/#{fetch(:application)}"
 
 set :ssh_options, {
   user: %w(user),
@@ -26,5 +26,10 @@ set :use_sudo, false
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
+
+  desc "Restart Passenger app"
+  task :restart do
+    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
+  end
 end
 
